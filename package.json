@@ -16,7 +16,7 @@
     "test": "jasmine-node --forceexit --verbose --noStack --captureExceptions --coffee spec"
   },
 
-  "repository": "",
+  "repository": "https://github.com/RobertBrewitz/axial-hexagonal-grid",
   "engines": {
     "node": "*"
   }
