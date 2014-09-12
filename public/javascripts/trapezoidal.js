@@ -4,13 +4,10 @@ var module = module || {};
 
 var Trapezoidal = {
   cubeToAxial: function (cube) {
-    var q = cube.x,
-        r = cube.y;
-
     if (cube.x+cube.y+cube.z !== 0)
       console.warn("The trapezoidal coordinate system have the contraint x + y + z = 0, read more at: http://www.redblobgames.com/grids/hexagons/");
 
-    return { q: q, r: r }
+    return { q: cube.x, r: cube.z }
   },
 
   axialToCube: function (axial) {

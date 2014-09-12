@@ -7,8 +7,8 @@ Trapezoidal = require "./../../../public/javascripts/trapezoidal"
 
 describe "cubeToAxial", ->
   it "extracts (q,r) from (x,z) in (x,y,z)", ->
-    result = Trapezoidal.cubeToAxial({ x: 2, y: -1, z: -1 })
-    expect(result).toEqual({ q: 2, r: -1 })
+    result = Trapezoidal.cubeToAxial({ x: 3, y: -2, z: -1 })
+    expect(result).toEqual({ q: 3, r: -1 })
 
 describe "axialToCube", ->
   it "calculates (x,y,z) from (q,r)", ->
