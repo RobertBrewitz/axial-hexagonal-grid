@@ -8,10 +8,22 @@ Using jasmine-node, jasmine-reporters and guard to trigger specs when files chan
 
 ## Setup Test Environment
 
-Requires ruby, node.js and npm, go to project folder and run:
+Requires ruby, node.js, npm and Cairo with xcb-shm.
+
+### Node Canvas and Cairo (on OS X Mavericks)
+
+Using (node-)canvas for some specs which requires Cairo.
+
+I installed Cairo with Homebrew, so I had to symlink some files from /opt/X11/lib/pkgconfig to /usr/local/lib/pkgconfig before I could install (node-)canvas as such:
 
 ```
-    $ bundle
+    ln -s /opt/X11/lib/pkgconfig/{xcb-shm,xcb,pthread-stubs,xau,xproto,xdmcp,xcb-render,xrender,renderproto,x11,kbproto,xext}.pc /usr/local/lib/pkgconfig
+```
+
+Go to project folder and run:
+
+```
+    $ bundle install
     $ npm install
 ```
 
