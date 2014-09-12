@@ -4,18 +4,16 @@
   "author": "Robert Brewitz Borg <hello@robertbrewitz.com>",
   "version": "0.0.1",
   "private": true,
-
   "dependencies": {},
-
   "devDependencies": {
     "jasmine-reporters": "0.4.1",
-    "jasmine-node": "1.14.3"
+    "jasmine-node": "1.14.3",
+    "canvas": "^1.1.6",
+    "imagediff": "^1.0.7"
   },
-
   "scripts": {
     "test": "jasmine-node --forceexit --verbose --noStack --captureExceptions --coffee spec"
   },
-
   "repository": "https://github.com/RobertBrewitz/axial-hexagonal-grid",
   "engines": {
     "node": "*"

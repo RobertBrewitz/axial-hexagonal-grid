@@ -8,7 +8,7 @@ Using jasmine-node, jasmine-reporters and guard to trigger specs when files chan
 
 ## Setup Test Environment
 
-Requires ruby, node.js, npm and Cairo with xcb-shm.
+Requires ruby, node.js, npm and Cairo with xcb-shm from X11.
 
 ### Node Canvas and Cairo (on OS X Mavericks)
 
