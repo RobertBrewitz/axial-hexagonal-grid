@@ -11,11 +11,7 @@ var Trapezoidal = {
   },
 
   axialToCube: function (axial) {
-    var x = axial.q,
-        y = axial.r,
-        z = -x-y;
-
-    return { x: x, y: y, z: z }
+    return { x: axial.q, y: -axial.q-axial.r, z: axial.r }
   },
 
   axialDistance: function (origin, destination) {

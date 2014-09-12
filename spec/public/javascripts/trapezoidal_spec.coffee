@@ -12,8 +12,8 @@ describe "cubeToAxial", ->
 
 describe "axialToCube", ->
   it "calculates (x,y,z) from (q,r)", ->
-    result = Trapezoidal.axialToCube({ q: 2, r: -1 })
-    expect(result).toEqual({ x: 2, y: -1, z: -1 })
+    result = Trapezoidal.axialToCube({ q: 3, r: -1 })
+    expect(result).toEqual({ x: 3, y: -2, z: -1 })
 
 describe "axialDistance", ->
   it "distance from (0,0) to (0,0) is 0", ->
