@@ -1,0 +1,23 @@
+{
+  "name": "AxialHexagonalGrid",
+  "description": "Axial hexagonal grid, tile and coordinate system for html5 canvas games, based on an article over at [Red Blob Games](http://www.redblobgames.com/grids/hexagons/).",
+  "author": "Robert Brewitz Borg <hello@robertbrewitz.com>",
+  "version": "0.0.1",
+  "private": true,
+
+  "dependencies": {},
+
+  "devDependencies": {
+    "jasmine-reporters": "0.4.1",
+    "jasmine-node": "1.14.3"
+  },
+
+  "scripts": {
+    "test": "jasmine-node --forceexit --verbose --noStack --captureExceptions --coffee spec"
+  },
+
+  "repository": "",
+  "engines": {
+    "node": "*"
+  }
+}
