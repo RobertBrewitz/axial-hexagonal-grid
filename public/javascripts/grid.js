@@ -31,16 +31,16 @@ Grid.prototype.drawTile = function (q, r) {
     var angle   = 2 * Math.PI / 6 * (iCorner + tileAngle),
         cornerX = centerX + this.tileSize * Math.cos(angle),
         cornerY = centerY + this.tileSize * Math.sin(angle);
-  
+
     if (iCorner > 0) {
       this.context.lineTo(cornerX, cornerY);
     } else {
       this.context.moveTo(cornerX, cornerY);
     }
   }
-  
+
   this.context.stroke();
-  
+
   this.context.restore();
 };
 
