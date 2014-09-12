@@ -10,26 +10,26 @@ Using jasmine-node, jasmine-reporters and guard to trigger specs when files chan
 
 Requires ruby, node.js and npm, go to project folder and run:
 
-```bash
-    bundle
-    npm install
+```
+    $ bundle
+    $ npm install
 ```
 
 ## Auto-running specs
 
 Go to project folder and run:
 
-```bash
-    guard
+```
+    $ guard
 ```
 
 ## Manually running specs
 
 Go to project folder and run:
 
-```bash
-    npm test
-```bash
+```
+    $ npm test
+```
 
 # Contributing
 
