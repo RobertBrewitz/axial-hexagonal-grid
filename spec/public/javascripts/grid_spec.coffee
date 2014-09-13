@@ -6,6 +6,16 @@ Image = Canvas.Image
 fs = require "fs"
 imagediff = require "imagediff"
 
+loadExpectedImage = (path) ->
+  expectedImage = new Image()
+  expectedImage.src = fs.readFileSync(__dirname + path)
+
+  expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
+  expectedContext = expectedCanvas.getContext("2d")
+  expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
+
+  expectedCanvas
+
 describe "instance of self", ->
   it "has origin coordinates to begin drawing from", ->
     grid = new Grid()
@@ -27,6 +37,7 @@ describe "drawTile", ->
     expect(grid.tilePointy).toBeDefined()
     expect(grid.tileLineColor).toBeDefined()
     expect(grid.tileLineWidth).toBeDefined()
+    expect(grid.tileColor).toBeDefined()
 
   it "draws a pointy hexagon tile", ->
     this.addMatchers imagediff.jasmine
@@ -38,14 +49,7 @@ describe "drawTile", ->
     grid = new Grid(context)
     grid.drawTile(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/pointy_hexagon.png")
-
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
-
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/pointy_hexagon.png"))
 
   it "draws a flat hexagon tile", ->
     this.addMatchers imagediff.jasmine
@@ -58,14 +62,22 @@ describe "drawTile", ->
     grid.tilePointy = false
     grid.drawTile(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/flat_hexagon.png")
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/flat_hexagon.png"))
 
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
+  it "draws a colored hexagon tile", ->
+    this.addMatchers imagediff.jasmine
 
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    canvas = new Canvas(210,210)
+    context = canvas.getContext("2d")
+    context.translate(105,105)
+
+    grid = new Grid(context)
+    grid.tilePointy = false
+    grid.tileColor = "rgba(255,155,55,1)"
+    grid.tileLineColor = "rgba(255,155,55,1)"
+    grid.drawTile(0, 0)
+
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/orange_hexagon.png"))
 
 describe "drawRingGrid", ->
   it "expects grid options", ->
@@ -83,14 +95,7 @@ describe "drawRingGrid", ->
     grid = new Grid(context)
     grid.drawRingGrid(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/ring_grid_no_spacing_pointy_tiles.png")
-
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
-
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/ring_grid_no_spacing_pointy_tiles.png"))
 
   it "draws a ring grid of pointy tiles and spacing with origin included", ->
     this.addMatchers imagediff.jasmine
@@ -103,14 +108,7 @@ describe "drawRingGrid", ->
     grid.tileSpacing = 5
     grid.drawRingGrid(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/ring_grid_spacing_pointy_tiles_with_origin.png")
-
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
-
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/ring_grid_spacing_pointy_tiles_with_origin.png"))
 
   it "draws a ring grid of pointy tiles and spacing with origin excluded", ->
     this.addMatchers imagediff.jasmine
@@ -124,14 +122,7 @@ describe "drawRingGrid", ->
     grid.gridDrawOrigin = false
     grid.drawRingGrid(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/ring_grid_spacing_pointy_tiles_without_origin.png")
-
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
-
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/ring_grid_spacing_pointy_tiles_without_origin.png"))
 
   it "draws a ring grid of flat tiles", ->
     this.addMatchers imagediff.jasmine
@@ -144,14 +135,7 @@ describe "drawRingGrid", ->
     grid.tilePointy = false
     grid.drawRingGrid(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/ring_grid_no_spacing_flat_tiles.png")
-
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
-
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/ring_grid_no_spacing_flat_tiles.png"))
 
   it "draws a ring grid of flat tiles and spacing with origin included", ->
     this.addMatchers imagediff.jasmine
@@ -165,14 +149,7 @@ describe "drawRingGrid", ->
     grid.tileSpacing = 5
     grid.drawRingGrid(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/ring_grid_spacing_flat_tiles_with_origin.png")
-
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
-
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/ring_grid_spacing_flat_tiles_with_origin.png"))
 
   it "draws a ring grid of flat tiles and spacing with origin excluded", ->
     this.addMatchers imagediff.jasmine
@@ -187,14 +164,7 @@ describe "drawRingGrid", ->
     grid.gridDrawOrigin = false
     grid.drawRingGrid(0, 0)
 
-    expectedImage = new Image()
-    expectedImage.src = fs.readFileSync(__dirname + "/../../fixtures/ring_grid_spacing_flat_tiles_without_origin.png")
-
-    expectedCanvas = new Canvas(expectedImage.width, expectedImage.height)
-    expectedContext = expectedCanvas.getContext("2d")
-    expectedContext.drawImage(expectedImage, 0, 0, expectedImage.width, expectedImage.height)
-
-    expect(canvas).toImageDiffEqual(expectedCanvas)
+    expect(canvas).toImageDiffEqual(loadExpectedImage("/../../fixtures/ring_grid_spacing_flat_tiles_without_origin.png"))
 
 describe "getCenterXY", ->
   it "expects tile options", ->

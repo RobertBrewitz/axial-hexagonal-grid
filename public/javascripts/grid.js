@@ -15,6 +15,7 @@ function Grid (context) {
   this.tileSize      = 100;
   this.tileLineColor = "rgba(0,0,0,1)";
   this.tileLineWidth = 1;
+  this.tileColor     = "rgba(0,0,0,0)";
 }
 
 Grid.prototype.drawRingGrid = function (q, r) {
@@ -106,6 +107,8 @@ Grid.prototype.drawTile = function (q, r) {
   }
 
   this.context.stroke();
+  this.context.fillStyle = this.tileColor;
+  this.context.fill();
 
   this.context.restore();
 };
