@@ -110,7 +110,6 @@ Grid.prototype.drawTile = function (q, r) {
   this.context.fillStyle = this.tileColor;
   this.context.fill();
 
-  this.context.closePath();
   this.context.restore();
 };
 
