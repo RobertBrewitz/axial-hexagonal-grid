@@ -11,7 +11,6 @@ function Grid (context) {
 
   this.tileSpacing   = 0;
   this.tilePointy    = true;
-  this.tileSpacing   = 0;
   this.tileSize      = 100;
   this.tileLineColor = "rgba(0,0,0,1)";
   this.tileLineWidth = 1;
@@ -86,6 +85,7 @@ Grid.prototype.drawTile = function (q, r) {
       tileAngle = 0;
 
   this.context.save();
+  this.context.beginPath();
 
   this.context.lineWidth = this.tileLineWidth;
   this.context.strokeStyle = this.tileLineColor;
@@ -110,6 +110,7 @@ Grid.prototype.drawTile = function (q, r) {
   this.context.fillStyle = this.tileColor;
   this.context.fill();
 
+  this.context.closePath();
   this.context.restore();
 };
 
