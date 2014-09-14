@@ -10,11 +10,15 @@ function Grid (context) {
   this.gridDrawOrigin = true;
 
   this.tileSpacing   = 0;
-  this.tilePointy    = true;
+  this.tilePointy    = false;
   this.tileSize      = 100;
   this.tileLineColor = "rgba(0,0,0,1)";
   this.tileLineWidth = 1;
   this.tileColor     = "rgba(0,0,0,0)";
+
+  this.tileCoordinates = false;
+  this.tileCoordinateColor = "rgba(0,0,0,1)";
+  this.tileCoordinateFont = "12px Arial";
 }
 
 Grid.prototype.drawRingGrid = function (q, r) {
@@ -109,8 +113,17 @@ Grid.prototype.drawTile = function (q, r) {
   this.context.stroke();
   this.context.fillStyle = this.tileColor;
   this.context.fill();
-
   this.context.restore();
+
+  if (this.tileCoordinates) {
+    this.context.save();
+    this.context.textAlign = "center";
+    this.context.textBaseline = "middle";
+    this.context.fillStyle = this.tileCoordinateColor;
+    this.context.font = this.tileCoordinateFont;
+    this.context.fillText(q+","+r, centerX, centerY);
+    this.context.restore();
+  }
 };
 
 module.exports = Grid;
