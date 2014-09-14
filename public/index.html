@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example Axial Hexagonal Grid</title>
+    <style type="text/css">
+      * { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+      input, textarea { -webkit-user-select:text; }
+      body { background-color:white; color:black }
+    </style>
+  </head>
+  <body>
+    <div style="margin:0 auto;width:800px;">
+      <h1><center>Example Axial Hexagonal Grid</center></h1>
+      <canvas id="stage" width="800" height="480" style="border:1px solid;"></canvas>
+    </div>
+    <script src="./javascripts/grid.js"></script>
+    <script src="./javascripts/stage.js"></script>
+    <script src="./javascripts/animation.js"></script>
+    <script src="./javascripts/scene.js"></script>
+    <script src="./javascripts/trapezoidal.js"></script>
+    <script>
+      document.body.onload = (function(anchor) {
+        anchor.hexagonal = new Stage().initialize().play();
+      })(window);
+    </script>
+  </body>
+</html>
