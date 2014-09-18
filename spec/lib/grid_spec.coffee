@@ -1,7 +1,6 @@
 "use strict"
 
 Grid = require "./../../lib/grid"
-Canvas = require "canvas"
 
 describe "getCenterXY", ->
   it "expects tile options", ->
@@ -10,10 +9,8 @@ describe "getCenterXY", ->
     expect(grid.tileSize).toBeDefined()
     expect(grid.pointyTiles).toBeDefined()
 
-  it "calculates pixel coordinates for canvas based on tile and grid options", ->
-    canvas = new Canvas(1,1)
-    context = canvas.getContext("2d")
-    grid = new Grid(context)
+  it "calculates pixel coordinates", ->
+    grid = new Grid()
 
     grid.tileSpacing = 0
     grid.tileSize = 100
@@ -33,9 +30,7 @@ describe "getCenterXY", ->
 
 describe "hexagonCoordinates", ->
   beforeEach ->
-    @canvas = new Canvas(0,0)
-    @context = @canvas.getContext("2d")
-    @grid = new Grid(@context)
+    @grid = new Grid()
 
   it "expects grid options", ->
     expect(@grid.withOrigin).toBeDefined()
