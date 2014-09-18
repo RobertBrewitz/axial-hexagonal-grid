@@ -13,14 +13,15 @@
       <h1><center>Example Axial Hexagonal Grid</center></h1>
       <canvas id="stage" width="800" height="480" style="border:1px solid;"></canvas>
     </div>
-    <script src="./javascripts/grid.js"></script>
+    <script src="./../lib/grid.js"></script>
+    <script src="./../lib/tile.js"></script>
     <script src="./javascripts/stage.js"></script>
     <script src="./javascripts/animation.js"></script>
     <script src="./javascripts/scene.js"></script>
-    <script src="./javascripts/trapezoidal.js"></script>
     <script>
       document.body.onload = (function(anchor) {
-        anchor.hexagonal = new Stage().initialize().play();
+        anchor.hexagonal = new Stage().initialize();
+        anchor.hexagonal.play();
       })(window);
     </script>
   </body>

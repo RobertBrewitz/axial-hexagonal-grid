@@ -1,6 +1,8 @@
 "use strict"
 
 function Scene () {
+  this.q = 0;
+  this.r = 0;
   this.mouse = {
     over: false,
     down: false,
@@ -16,37 +18,24 @@ Scene.prototype.initialize = function (stage) {
   this.stage   = stage;
   this.element = stage.element;
   this.context = stage.context;
-  this.grid = new Grid(this.context);
 
-  this.grid.gridRings      = 2;
-  this.grid.gridDrawOrigin = true;
-  this.grid.tileSpacing    = 2;
-  this.grid.tilePointy     = true;
-  this.grid.tileSize       = 25;
-  this.grid.tileLineColor  = "rgba(0,0,0,1)";
-  this.grid.tileLineWidth  = 1;
-  this.grid.tileColor      = "rgba(0,0,0,0)";
-  this.grid.tileCoordinates = true;
+  this.grid = new Grid();
+  this.tile = new Tile(this.grid, this.context)
+
+  this.grid.tileSize = 50;
+  this.grid.withOrigin = true;
+  this.tile.coordinates = true;
+  this.tile.size = 50;
 
   return this;
 };
 
-Scene.prototype.setQR = function (q, r) {
-  if (this.mouse.q != q || this.mouse.r != r) {
-    this.onTileFocus();
-  }
-
-  this.mouse.q = q;
-  this.mouse.r = r;
-};
-
-Scene.prototype.onTileFocus = function () {};
-
 Scene.prototype.draw = function () {
-  this.grid.drawRingGrid(0,0);
+  var coordinates = this.grid.hexagonCoordinates(this.q, this.r, 2);
+  for (var i = 0; i < coordinates.length; i++) {
+    this.tile.draw(coordinates[i].q, coordinates[i].r)
+  }
 };
-
-Scene.prototype.drawBackground = function () {};
 
 Scene.prototype.addEventListeners = function () {
   this.mouseUpEventHandler = this.mouseUp.bind(this);
