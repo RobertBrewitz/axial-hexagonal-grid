@@ -4,7 +4,7 @@ Axial hexagonal grid, tile and coordinate system for HTML5 Canvas.
 
 ## Reference material and inspirational sources
 
-- [Red Blob Games](http://www.redblobgames.com/grids/hexagons/).
+- [Red Blob Games](http://www.redblobgames.com/grids/hexagons/)
 - [DevMag](http://devmag.org.za/2013/08/31/geometry-with-hex-coordinates)
 
 # Test-suite
