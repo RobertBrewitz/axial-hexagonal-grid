@@ -1,3 +1,5 @@
+"use strict"
+
 Tile = require "./../../lib/tile"
 Grid = require "./../../lib/grid"
 Canvas = require "canvas"
