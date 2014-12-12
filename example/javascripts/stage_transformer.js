@@ -6,16 +6,25 @@
 "use strict";
 
 function StageTransformer () {
-  this.mouse = {
-    over: false,
-    down: false,
-    moved: false
-  };
+  this.element = null;
+  this.stage = null;
+  this.mouse = null;
+  this.scaling = null;
+  this.minScaleX = null;
+  this.minScaleY = null;
+  this.maxScaleX = null;
+  this.maxScaleY = null;
+  this.panning = null;
 }
 
 StageTransformer.prototype.initialize = function (params) {
   this.element = params.element;
   this.stage = params.stage;
+  this.mouse = params.mouse || {
+    over: false,
+    down: false,
+    moved: false
+  };
 
   this.scaling = params.scaling || true;
   this.minScaleX = params.minScaleX || 0.01;
@@ -66,7 +75,6 @@ StageTransformer.prototype.mouseDown = function (event) {
 
 StageTransformer.prototype.mouseUp = function (event) {
   this.mouse.down = false;
-  if (!this.mouse.moved) {}
 };
 
 StageTransformer.prototype.mouseMove = function (event) {
