@@ -4,25 +4,76 @@
     <title>Example Axial Hexagonal Grid</title>
     <style type="text/css">
       * { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
-      input, textarea { -webkit-user-select:text; }
-      body { background-color:white; color:black }
+      html {height:100%;width:100%;overflow:hidden;}
+      body {background:white;color:black;height:100%;width:100%;margin:0;}
+      input, textarea {-webkit-user-select:text;}
     </style>
   </head>
   <body>
-    <div style="margin:0 auto;width:800px;">
-      <h1><center>Example Axial Hexagonal Grid</center></h1>
-      <canvas id="stage" width="800" height="480" style="border:1px solid;"></canvas>
-    </div>
+    <canvas id="stage"></canvas>
     <script src="./../lib/grid.js"></script>
-    <script src="./../lib/tile.js"></script>
-    <script src="./javascripts/stage.js"></script>
-    <script src="./javascripts/animation.js"></script>
-    <script src="./javascripts/scene.js"></script>
+    <script src="./javascripts/easeljs-0.7.1.min.js"></script>
+    <script src="./javascripts/stage_transformer.js"></script>
     <script>
-      document.body.onload = (function(anchor) {
-        anchor.hexagonal = new Stage().initialize();
-        anchor.hexagonal.play();
-      })(window);
+      var element        = document.getElementById("stage");
+          element.height = window.innerHeight;
+          element.width  = window.innerWidth;
+
+      var stage   = new createjs.Stage("stage");
+          stage.x = window.innerWidth/2;
+          stage.y = window.innerHeight/2;
+
+      var grid             = new Grid();
+          grid.tileSize    = 50;
+          grid.tileSpacing = 0;
+          grid.pointyTiles = false;
+          grid.withOrigin  = true;
+
+      var stageTransformer = new StageTransformer().initialize({
+        element: element,
+        stage: stage
+      });
+
+      stageTransformer.addEventListeners();
+
+      var coordinates = grid.hexagonCoordinates(0, 0, 2)
+      for (var i = 0; i < coordinates.length; i++) {
+        var q = coordinates[i].q,
+            r = coordinates[i].r,
+            center = grid.getCenterXY(q, r),
+            hexagon = new createjs.Shape();
+
+        hexagon.graphics
+          .beginFill("rgba(150,150,150,1)")
+          .beginStroke("rgba(50,50,50,1)")
+          .drawPolyStar(0, 0, grid.tileSize, 6, 0, 0);
+
+        hexagon.q = q;
+        hexagon.r = r;
+        hexagon.x = center.x;
+        hexagon.y = center.y;
+
+        hexagon.addEventListener("click", function (event) {
+          if (!stageTransformer.mouse.moved) {
+            event.target.graphics
+              .clear()
+              .beginFill("rgba(150,0,0,1)")
+              .beginStroke("rgba(50,0,0,1)")
+              .drawPolyStar(0, 0, grid.tileSize, 6, 0, 0);
+          }
+        });
+
+        stage.addChild(hexagon);
+      }
+
+      var tick = function (event) {
+        stage.update();
+      };
+
+      tick();
+
+      createjs.Ticker.setFPS(30);
+      createjs.Ticker.addEventListener("tick", tick);
     </script>
   </body>
 </html>
