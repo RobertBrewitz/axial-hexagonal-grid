@@ -1,7 +1,7 @@
-"use strict";
 var Grid;
 
 Grid = (function() {
+  "use strict";
   function Grid() {
     this.tileSize = 100;
     this.tileSpacing = 0;
