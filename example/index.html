@@ -11,7 +11,7 @@
   </head>
   <body>
     <canvas id="stage"></canvas>
-    <script src="./../dist/AxialHexagonalGrid.js"></script>
+    <script src="./../dist/js/ahg.js"></script>
     <script src="./javascripts/easeljs-0.7.1.min.js"></script>
     <script src="./javascripts/stage_transformer.js"></script>
     <script>
@@ -27,7 +27,6 @@
           grid.tileSize    = 50;
           grid.tileSpacing = 0;
           grid.pointyTiles = false;
-          grid.withOrigin  = true;
 
       var stageTransformer = new StageTransformer().initialize({
         element: element,
@@ -36,7 +35,7 @@
 
       stageTransformer.addEventListeners();
 
-      var coordinates = grid.hexagonCoordinates(0, 0, 2)
+      var coordinates = grid.hexagon(0, 0, 2, true)
       for (var i = 0; i < coordinates.length; i++) {
         var q = coordinates[i].q,
             r = coordinates[i].r,

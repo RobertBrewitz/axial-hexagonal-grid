@@ -2,13 +2,13 @@
 
 module.exports = (grunt) ->
   grunt.initConfig
-    pkg: "package.json"
+    pkg: "./package.json"
     concat:
       options:
-        seperator: ";"
+        separator: ";"
       dist:
         src: ["src/**/*.js"]
-        dest: ["dist/js/<%= pkg.name %>-<%= pkg.version %>.js"]
+        dest: "dist/js/ahg.js"
     watch:
       coffee:
         files: ["**/*.coffee"]
@@ -40,5 +40,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-jasmine"
+  grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.registerTask "default", ["watch"]
 

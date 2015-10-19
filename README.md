@@ -17,6 +17,12 @@ Using coffee-script, if you don't have it installed, install using:
   $ npm install -g coffee-script
 ```
 
+# Build dist
+
+```
+  $ grunt concat
+```
+
 # Install dev dependencies
 
 ```
