@@ -17,7 +17,19 @@ Using coffee-script, if you don't have it installed, install using:
   $ npm install -g coffee-script
 ```
 
+# Install dev dependencies
+
+```
+  $ npm install
+```
+
 # Test-suite
+
+## Manually running specs
+
+```
+  $ npm test
+```
 
 ## Auto-running specs
 
@@ -26,17 +38,7 @@ Using grunt to trigger specs when files change.
 Go to project folder and run:
 
 ```
-    $ grunt
-```
-
-## Manually running specs
-
-Using jasmine-node and jasmine-reporters.
-
-Go to project folder and run:
-
-```
-    $ npm test
+  $ grunt
 ```
 
 # Contributing
