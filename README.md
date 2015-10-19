@@ -9,30 +9,29 @@ Watch the [example](http://www.robertbrewitz.com/axial-hexagonal-grid/).
 - [Red Blob Games](http://www.redblobgames.com/grids/hexagons/)
 - [DevMag](http://devmag.org.za/2013/08/31/geometry-with-hex-coordinates)
 
+# Coffee-script
+
+Using coffee-script, if you don't have it installed, install using:
+
+```
+  $ npm install -g coffee-script
+```
+
 # Test-suite
-
-Using jasmine-node, jasmine-reporters and guard to trigger specs when files change.
-
-## Setup Test Environment
-
-Requires ruby, node.js, npm.
-
-Go to project folder and run:
-
-```
-    $ bundle install
-    $ npm install
-```
 
 ## Auto-running specs
 
+Using grunt to trigger specs when files change.
+
 Go to project folder and run:
 
 ```
-    $ guard
+    $ grunt
 ```
 
 ## Manually running specs
+
+Using jasmine-node and jasmine-reporters.
 
 Go to project folder and run:
 
@@ -48,7 +47,7 @@ Submit pull-requests and report bugs over at the projects [GitHub Issue Tracking
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Robert Brewitz Borg
+Copyright (c) 2015 Robert Brewitz Borg
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
