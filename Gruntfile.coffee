@@ -9,10 +9,16 @@ module.exports = (grunt) ->
       dist:
         src: ["src/**/*.js"]
         dest: "dist/js/ahg.js"
+    uglify:
+      dist:
+        files:
+          "dist/js/ahg.min.js": ["dist/js/ahg.js"]
+    jshint:
+      all: ["src/**/*.js"]
     watch:
       coffee:
         files: ["**/*.coffee"]
-        tasks: ["coffee", "jasmine"]
+        tasks: ["coffee", "jshint", "jasmine"]
     coffee:
       options:
         bare: true
@@ -41,5 +47,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-jasmine"
   grunt.loadNpmTasks "grunt-contrib-concat"
+  grunt.loadNpmTasks "grunt-contrib-uglify"
+  grunt.loadNpmTasks "grunt-contrib-jshint"
   grunt.registerTask "default", ["watch"]
+  grunt.registerTask "dist", ["concat", "uglify"]
 
