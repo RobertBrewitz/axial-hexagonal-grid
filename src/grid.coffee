@@ -1,6 +1,6 @@
-"use strict"
-
 class Grid
+  "use strict"
+
   constructor: ->
     @tileSize = 100
     @tileSpacing = 0
