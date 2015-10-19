@@ -1,7 +1,7 @@
 "use strict"
 
 describe "ring", ->
-  it "returns coordinates for a ring", ->
+  it "returns coordinates for a ring two (2) tiles from center", ->
     grid = new Grid()
     result = grid.ring(-1, -1, 2)
     expect(result).toContain({ q:  1, r: -1 })
@@ -21,7 +21,7 @@ describe "hexagon", ->
   beforeEach ->
     @grid = new Grid()
 
-  it "returns coordinates for a solid hexagonal shape", ->
+  it "returns coordinates for a solid hexagonal shape stretching two (2) tiles from center", ->
     result = @grid.hexagon(-1, -1, 2, true)
     expect(result).toContain({ q: -1, r: -1 })
     expect(result).toContain({ q:  0, r: -1 })
@@ -44,7 +44,7 @@ describe "hexagon", ->
     expect(result).toContain({ q:  0, r:  0 })
     expect(result.length).toEqual(19)
 
-  it "returns coordinates for a hexagonal shape without the center coordinate", ->
+  it "returns coordinates for a hexagonal shape stretching two (2) tiles from center without the center coordinate", ->
     result = @grid.hexagon(-1, -1, 2)
     expect(result).toContain({ q:  0, r: -1 })
     expect(result).toContain({ q:  0, r: -2 })
