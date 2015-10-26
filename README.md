@@ -20,7 +20,7 @@ Using coffee-script, if you don't have it installed, install using:
 # Build dist
 
 ```
-  $ grunt concat
+  $ grunt dist
 ```
 
 # Install dev dependencies
