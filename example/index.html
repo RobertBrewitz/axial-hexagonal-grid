@@ -23,10 +23,7 @@
           stage.x = window.innerWidth/2;
           stage.y = window.innerHeight/2;
 
-      var grid             = new Grid();
-          grid.tileSize    = 50;
-          grid.tileSpacing = 0;
-          grid.pointyTiles = false;
+      var grid = gridConstructor({ tileSize: 50, tileSpacing: 0, tilePointy: false });
 
       var stageTransformer = new StageTransformer().initialize({
         element: element,
@@ -45,7 +42,7 @@
         hexagon.graphics
           .beginFill("rgba(150,150,150,1)")
           .beginStroke("rgba(50,50,50,1)")
-          .drawPolyStar(0, 0, grid.tileSize, 6, 0, 0);
+          .drawPolyStar(0, 0, grid.getTileSize(), 6, 0, 0);
 
         hexagon.q = q;
         hexagon.r = r;
@@ -58,7 +55,7 @@
               .clear()
               .beginFill("rgba(150,0,0,1)")
               .beginStroke("rgba(50,0,0,1)")
-              .drawPolyStar(0, 0, grid.tileSize, 6, 0, 0);
+              .drawPolyStar(0, 0, grid.getTileSize(), 6, 0, 0);
           }
         });
 
