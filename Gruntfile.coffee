@@ -14,6 +14,8 @@ module.exports = (grunt) ->
         files:
           "dist/js/ahg.min.js": ["dist/js/ahg.js"]
     jshint:
+      options:
+        force: true
       all: ["src/**/*.js"]
     watch:
       coffee:
