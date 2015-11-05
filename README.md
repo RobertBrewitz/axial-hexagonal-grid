@@ -2,8 +2,6 @@
 
 Axial hexagonal grid and coordinate system for HTML5 Canvas.
 
-Watch the [example](http://www.robertbrewitz.com/axial-hexagonal-grid/).
-
 ## Reference material and inspirational sources
 
 - [Red Blob Games](http://www.redblobgames.com/grids/hexagons/)
