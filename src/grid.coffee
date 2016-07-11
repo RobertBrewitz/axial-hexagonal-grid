@@ -29,7 +29,7 @@ class Grid
     result = []
     neighbors = [[1,0],[1,-1],[0,-1],[-1,0],[-1,1],[0,1]]
     for neighbor in neighbors
-      result.push { q: q+neighbor[0], r: neighbor[1] }
+      result.push { q: q+neighbor[0], r: r+neighbor[1] }
     result
 
   getCenterXY: (q, r) ->
